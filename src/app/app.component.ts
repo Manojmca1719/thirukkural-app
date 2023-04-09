@@ -9,16 +9,18 @@ CommonService
 export class AppComponent {
   title = 'thirukkural-app';
   public data: any;
-
-  constructor (public commonService:CommonService) {
-    this.getThirukkural();
+  public thirukkuralNo: Array<number> = [];
+  constructor(public commonService: CommonService) {
+    for (let i = 1; i <= 1330; i++) {
+      this.thirukkuralNo.push(i);
+    }
   }
 
-  public getThirukkural = () => {
-    let url = "https://api-thirukkural.vercel.app/api?num=3"
-    this.commonService.getDataService(url).subscribe((res)=>{
+  public getThirukkural = (event?:any) => {
+    let findNo = event.value;
+    let url = 'https://api-thirukkural.vercel.app/api?num='+findNo;
+    this.commonService.getDataService(url).subscribe((res) => {
       this.data = res;
-      console.log(this.data); 
     })
   }
 }

@@ -17,6 +17,22 @@
       "உலகப்
       பொது மறை" என்றும் அழைக்கப்படுகிறது
     </div>
-  </div>
 
+    <div class="my-3">
+      <form>
+        <label for="thirukkural">திருக்குறள் எண்ணை தேர்வு செய்யவும் :</label>
+        <br>
+        <select name="" id="" class="form-control" (change)="getThirukkural($event.target)">
+          <option selected hidden>--தேர்வு செய்யவும்--</option>
+          <option *ngFor="let i of thirukkuralNo" [value]="i">{{i}}</option>
+        </select>
+      </form>
+    </div>
+
+    <div class="my-5" *ngIf="data">
+      <div>{{data.line1}}</div>
+      <div>{{data.line2}}</div>
+    </div>
+  </div>
+  
 </section>
